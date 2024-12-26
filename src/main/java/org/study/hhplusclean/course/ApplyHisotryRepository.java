@@ -1,8 +1,13 @@
 package org.study.hhplusclean.course;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.study.hhplusclean.domain.ApplyHistory;
 import org.study.hhplusclean.domain.Course;
 
-public interface CourseRepository extends JpaRepository<Course,Long> {
-    Course getCourseById(long courseId);
+import java.util.List;
+
+public interface ApplyHisotryRepository extends JpaRepository<ApplyHistory,Long> {
+    List<ApplyHistory> getApplyHistoriesByUserId(long userId);
+
+    ApplyHistory searchByCourseIdAndUserId(long courseId, long userId);
 }

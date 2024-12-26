@@ -1,15 +1,14 @@
-package org.study.hhplusclean.course;
+package org.study.hhplusclean.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.study.hhplusclean.domain.Course;
+import org.study.hhplusclean.domain.User;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public interface CourseRepository extends JpaRepository<Course,Long> {
+public interface UserRepository extends JpaRepository<User,Long> {
     @Override
-    Optional<Course> findById(Long id);
-
-    List<Course> searchCourseByOpenDate(LocalDate openDate);
+    Optional<User> findById(Long id);
 }

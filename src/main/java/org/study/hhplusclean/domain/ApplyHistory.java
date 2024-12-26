@@ -1,36 +1,24 @@
-package org.study.hhplusclean.domain.course;
+package org.study.hhplusclean.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.study.hhplusclean.domain.Timestamped;
-import org.study.hhplusclean.domain.user.User;
+import lombok.*;
 
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Getter
 @Table(name="apply_history")
-public class ApplyHistory extends Timestamped {
+public class ApplyHistory extends BaseEntity {
 
-    @Id // ID 값, Primary Key로 사용하겠다는 뜻입니다.
-    @GeneratedValue(strategy = GenerationType.AUTO) // 자동 증가 명령입니다.
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Long userId;
-    @Column(nullable = false)
+    @Column(name = "course_id", nullable = false)
     private Long courseId;
-
-    @ManyToOne
-    @JoinColumn(name="userId")
-    User user;
-
-    @ManyToOne
-    @JoinColumn(name="courseId")
-    Course course;
 
     public ApplyHistory insert(long userId,long courseId){
         this.userId=userId;
