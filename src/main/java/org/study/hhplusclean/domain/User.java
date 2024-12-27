@@ -1,11 +1,10 @@
-package org.study.hhplusclean.domain.user;
+package org.study.hhplusclean.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.study.hhplusclean.domain.Timestamped;
 
 @Entity
 @Builder
@@ -13,8 +12,10 @@ import org.study.hhplusclean.domain.Timestamped;
 @NoArgsConstructor
 @ToString
 @Table(name="user")
-public class User extends Timestamped {
-    @Id // ID 값, Primary Key로 사용하겠다는 뜻입니다.
-    @GeneratedValue(strategy = GenerationType.AUTO) // 자동 증가 명령입니다.
+public class User extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "user_name", nullable = false)
+    private String userName;
 }

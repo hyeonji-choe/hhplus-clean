@@ -1,36 +1,36 @@
-package org.study.hhplusclean.domain.course;
+package org.study.hhplusclean.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.study.hhplusclean.domain.Timestamped;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Entity // 테이블임을 나타냅니다.
+@Entity
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor// 기본생성자를 대신 생성해줍니다.
+@NoArgsConstructor
+@Getter
+@Setter
 @ToString
 @Table(name="course")
-public class Course extends Timestamped {
+public class Course extends BaseEntity {
 
-    @Id // ID 값, Primary Key로 사용하겠다는 뜻입니다.
-    @GeneratedValue(strategy = GenerationType.AUTO) // 자동 증가 명령입니다.
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false) // 컬럼 값이고 반드시 값이 존재해야 함을 나타냅니다.
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(name = "tutor", nullable = false)
     private String tutor;
 
-    @Column(nullable = false)
-    private Integer seats;
+    @Column(name = "seats", nullable = false)
+    @Version
+    @Builder.Default
+    private Integer seats = 30;
 
-    @Column(nullable = false)
+    @Column(name = "open_date", nullable = false)
     private LocalDate openDate;
 
 

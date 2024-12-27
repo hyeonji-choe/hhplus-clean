@@ -9,5 +9,8 @@ import lombok.*;
 @Setter
 @ToString
 public class ApplyCourseResponse {
+    private long courseId;
+    private String courseName;
+    private long userId;
     private String resultMsg;
 }
